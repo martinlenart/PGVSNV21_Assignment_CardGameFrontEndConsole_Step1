@@ -50,6 +50,7 @@ namespace CardGameFrontEndConsole.Services
                         ? null
                         : await response.Content.ReadAsStringAsync();
 
+                    response.EnsureSuccessStatusCode(); //throws and exception if not OK
                     if (response.IsSuccessStatusCode)
                     {
                         result = JsonConvert.DeserializeObject<T>(content);
